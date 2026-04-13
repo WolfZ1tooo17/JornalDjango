@@ -4,15 +4,23 @@
     <article>
         <h2>{{ artigo.titulo }}</h2>
         <p><small>Publicado em: {{ artigo.data_publicacao|date:"d/m/Y H:i" }}</small></p>
+
+        <!-- MOVI O CÓDIGO DA IMAGEM PARA AQUI (DENTRO DO BLOCO) -->
+        {% if artigo.imagem %}
+            <div style="margin: 20px 0;">
+                <img src="{{ artigo.imagem.url }}" alt="{{ artigo.titulo }}" style="max-width: 100%; height: auto; border-radius: 8px;">
+            </div>
+        {% endif %}
+
         <div style="margin: 20px 0;">
             {{ artigo.corpo|linebreaks }}
         </div>
+        
         <a href="{% url 'comentarios_artigo' artigo.id %}" class="btn">Ver e Publicar Comentários</a>
-        <br><br>
+          
+  
+
         <a href="{% url 'lista_artigos' %}">← Voltar para a lista de artigos</a>
     </article>
 {% endblock %}
 
-{% if artigo.imagem %}
-    <img src="{{ artigo.imagem.url }}" style="max-width: 100%; height: auto; margin-bottom: 20px; border-radius: 8px;">
-{% endif %}
