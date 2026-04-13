@@ -1,0 +1,15 @@
+{% extends 'jornal/base.html' %}
+
+{% block content %}
+    <h2>Últimas Notícias</h2>
+    <ul>
+        {% for artigo in artigos %}
+            <li>
+                <a href="{% url 'detalhe_artigo' artigo.id %}" class="artigo-link">{{ artigo.titulo }}</a>
+                <p><small>Publicado em: {{ artigo.data_publicacao|date:"d/m/Y H:i" }}</small></p>
+            </li>
+        {% empty %}
+            <li>Ainda não há notícias publicadas.</li>
+        {% endfor %}
+    </ul>
+{% endblock %}
