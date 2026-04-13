@@ -12,3 +12,7 @@
         <a href="{% url 'lista_artigos' %}">← Voltar para a lista de artigos</a>
     </article>
 {% endblock %}
+
+{% if artigo.imagem %}
+    <img src="{{ artigo.imagem.url }}" style="max-width: 100%; height: auto; margin-bottom: 20px; border-radius: 8px;">
+{% endif %}

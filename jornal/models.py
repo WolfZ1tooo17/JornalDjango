@@ -12,6 +12,7 @@ class Artigo(models.Model):
     corpo = models.TextField()
     data_publicacao = models.DateTimeField(auto_now_add=True)
     visualizacoes = models.PositiveIntegerField(default=0)
+    imagem = models.ImageField(upload_to='noticias/', null=True, blank=True)
 
     def __str__(self):
         return self.titulo
