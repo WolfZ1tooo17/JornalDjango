@@ -11,6 +11,7 @@ class Artigo(models.Model):
     categoria = models.ForeignKey(Categoria, on_delete=models.SET_NULL, null=True, blank=True)
     corpo = models.TextField()
     data_publicacao = models.DateTimeField(auto_now_add=True)
+    visualizacoes = models.PositiveIntegerField(default=0)
 
     def __str__(self):
         return self.titulo
@@ -22,4 +23,5 @@ class Comentario(models.Model):
 
     def __str__(self):
         return f"Comentário em {self.artigo.titulo}"
+
 

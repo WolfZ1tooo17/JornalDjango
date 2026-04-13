@@ -8,6 +8,9 @@ def lista_artigos(request):
 def detalhe_artigo(request, artigo_id):
     artigo = get_object_or_404(Artigo, pk=artigo_id)
     return render(request, 'jornal/detalhe_artigo.html', {'artigo': artigo})
+    artigo.visualizacoes += 1
+    artigo.save()
+
 
 def comentarios_artigo(request, artigo_id):
     artigo = get_object_or_404(Artigo, pk=artigo_id)
