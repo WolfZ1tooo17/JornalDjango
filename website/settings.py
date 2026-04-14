@@ -125,3 +125,9 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 import os
 MEDIA_URL = '/media/'
 MEDIA_ROOT = BASE_DIR / 'media'
+
+# Permite o domínio do Render e o localhost
+ALLOWED_HOSTS = ['jornaldjango.onrender.com', 'localhost', '127.0.0.1']
+
+# Se estiver usando banco de dados externo ou arquivos estáticos:
+DEBUG = False # Para produção
