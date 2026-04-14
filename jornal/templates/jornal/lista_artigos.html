@@ -1,15 +1,34 @@
 {% extends 'jornal/base.html' %}
 
 {% block content %}
-    <h2>Últimas Notícias</h2>
-    <ul>
+    <h2 class="mb-4 text-primary border-bottom pb-2">Últimas Notícias</h2>
+    
+    <div class="row">
         {% for artigo in artigos %}
-            <li>
-                <a href="{% url 'detalhe_artigo' artigo.id %}" class="artigo-link">{{ artigo.titulo }}</a>
-                <p><small>Publicado em: {{ artigo.data_publicacao|date:"d/m/Y H:i" }}</small></p>
-            </li>
+            <div class="col-md-4 mb-4">
+                <div class="card h-100">
+                    {% if artigo.imagem %}
+                        <img src="{{ artigo.imagem.url }}" class="card-img-top" alt="{{ artigo.titulo }}" style="height: 200px; object-fit: cover;">
+                    {% else %}
+                        <div class="bg-secondary text-white d-flex align-items-center justify-content-center" style="height: 200px;">
+                            <span>Sem Imagem</span>
+                        </div>
+                    {% endif %}
+                    <div class="card-body">
+                        <span class="badge bg-info text-dark mb-2">{{ artigo.categoria }}</span>
+                        <h5 class="card-title">{{ artigo.titulo }}</h5>
+                        <p class="card-text text-muted small">
+                            Publicado em: {{ artigo.data_publicacao|date:"d/m/Y" }}
+                        </p>
+                        <a href="{% url 'detalhe_artigo' artigo.id %}" class="btn btn-outline-primary w-100">Ler Notícia</a>
+                    </div>
+                </div>
+            </div>
         {% empty %}
-            <li>Ainda não há notícias publicadas.</li>
+            <div class="col-12 text-center py-5">
+                <h3>Ainda não há notícias publicadas.</h3>
+            </div>
         {% endfor %}
-    </ul>
+    </div>
 {% endblock %}
+
